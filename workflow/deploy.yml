@@ -14,6 +14,7 @@ jobs:
     steps:
       - name: Checkout Source
         uses: actions/checkout@v4
+        persist-credentials: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -37,4 +38,4 @@ jobs:
           repository-name: Sbbke/Sbbke.github.io 
           branch: gh-pages # The branch in Repo B for hosting
           folder: build # The folder the build step generated
-          clean: true
+          clean: false
