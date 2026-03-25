@@ -35,6 +35,6 @@ jobs:
         with:
           token: ${{ secrets.DEPLOY_TOKEN }}
           repository-name: Sbbke/Sbbke.github.io 
-          branch: dev # The branch in Repo B for hosting
+          branch: gh-pages # The branch in Repo B for hosting
           folder: build # The folder the build step generated
           clean: true
