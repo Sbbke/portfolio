@@ -2,15 +2,14 @@
   "name": "my-react-router-app",
   "private": true,
   "type": "module",
-  "homepage": "https://github.com/Sbbke/Sbbke.github.io",
-
+  "homepage": "https://Sbbke.github.io",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b main -d build"
   },
   "dependencies": {
     "@react-router/node": "7.12.0",
