@@ -18,25 +18,7 @@ type Item = {
 
 // ─── Loader ──────────────────────────────────────────────────────────────────
 
-export async function loader() {
-  const posts = await getAllPosts();
-  const items: Item[] = [
-    {
-      id: "cv-main",
-      title: "Full CV – Andrew Hou",
-      slug: "cv",
-      category: "cv",
-      favorite: true,
-    },
-    ...posts.map(p => ({
-      id: p.slug,
-      title: p.title,
-      slug: p.slug,
-      category: "blog" as const,
-    })),
-  ];
-  return { items };
-}
+
 
 // ─── Icons ───────────────────────────────────────────────────────────────────
 
@@ -146,7 +128,6 @@ function SidebarSection({ title, items, activePathPrefix }: {
   activePathPrefix: string;
 }) {
   const { pathname } = useNavigation().location ?? {};
-
   return (
     <>
       <h3 className="sidebar-section-title">{title}</h3>
@@ -204,24 +185,53 @@ function useDarkMode() {
 // ─── Root Layout ──────────────────────────────────────────────────────────────
 
 export default function RootLayout() {
-  const { items } = useLoaderData() as { items: Item[] };
+  const [items, setItems] = useState<Item[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigation = useNavigation();
   const { darkMode, toggle } = useDarkMode();
 
-  const cvItems   = items.filter(i => i.category === "cv");
+  useEffect(() => {
+    async function loadPosts() {
+      try {
+        const posts = await getAllPosts();
+        const allItems: Item[] = [
+          {
+            id: "cv-main",
+            title: "Full CV – Andrew Hou",
+            slug: "cv",
+            category: "cv",
+            favorite: true,
+          },
+          ...posts.map(p => ({
+            id: p.slug,
+            title: p.title,
+            slug: p.slug,
+            category: "blog" as const,
+          })),
+        ];
+        setItems(allItems);
+      } catch (error) {
+        console.error('Failed to load posts:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadPosts();
+  }, []);
+
+  const cvItems = items.filter(i => i.category === "cv");
   const blogItems = items.filter(i => i.category === "blog");
-  const isLoading = navigation.state === "loading";
+  const showLoading = isLoading || navigation.state === "loading";
 
   return (
     <div className="page-container">
       <header className="header">
         <div className="container">
           <ThemeToggle darkMode={darkMode} onToggle={toggle} />
-
           <Link to="/" className="page-title-link">
             <h1 className="page-title">Andrew Hou</h1>
           </Link>
-
           <ContactBar />
         </div>
       </header>
@@ -229,14 +239,20 @@ export default function RootLayout() {
       <div className="app-layout">
         <aside id="sidebar">
           <nav>
-            <SidebarSection title="CV"         items={cvItems}   activePathPrefix="/cv"   />
-            <SidebarSection title="Blog Posts" items={blogItems} activePathPrefix="/blog" />
+            {isLoading ? (
+              <div className="sidebar-loading">Loading posts...</div>
+            ) : (
+              <>
+                <SidebarSection title="CV" items={cvItems} activePathPrefix="/cv" />
+                <SidebarSection title="Blog Posts" items={blogItems} activePathPrefix="/blog" />
+              </>
+            )}
           </nav>
         </aside>
 
         <main className="main-content">
           <div className="container">
-            {isLoading ? (
+            {showLoading ? (
               <div className="loading-placeholder">
                 <div className="spinner" />
                 <p>Loading…</p>
@@ -272,3 +288,4 @@ export function ErrorBoundary() {
 
   );
 }
+

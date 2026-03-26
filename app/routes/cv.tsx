@@ -1,21 +1,10 @@
-import type { Route } from "./+types/cv"; // if using typegen
 
 import './cv.css'
 // src/routes/cv.tsx
 
 
-// Optional: loader for single CV details (if more complex)
-export async function loader() {
-  // Could fetch more data, but for now static
-  return {
-    title: "Andrew Hou – Software Engineer CV",
-    content: "Here is your full CV content...\nEducation...\nExperience...\nSkills...",
-  };
-}
 
-export default function CvPost({ loaderData }: Route.ComponentProps) {
-  const { title, content } = loaderData || { title: "CV", content: "Loading CV..." };
-
+export default function CvPost() {
   return (
      <div className="cv-container">
         <article className="cv-article">
