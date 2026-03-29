@@ -1,5 +1,27 @@
 
+# Goal
 
+## frontend practice
+
+## CI/CD
+```mermaid
+graph TD
+  A[portfolio-repo] -->|Push Event| B(GitHub Actions)
+  B -->|Build Process| C{Workflow}
+  C -->|Deploy| D[username.github.io]
+  style B fill:#000,stroke:#333,stroke-width:2px 
+```
+- Source Repository
+> portfolio — Encapsulates the core web application codebase and logic.
+
+- Automation Trigger
+> A standardized GitHub Action is invoked upon a push event to the designated deployment branch.
+
+- Build Sequence
+> The workflow executes a production build, transforming the React source code into optimized static assets.
+
+- Distribution
+> The resulting artifacts are deployed to the github.io host environment, where they are rendered as a Single Page Application (SPA).
 
 ## Problems during developemnt
 This section documents the specific architectural challenges faced during the development of this project.
