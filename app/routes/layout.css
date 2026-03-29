@@ -314,8 +314,8 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--spacing-lg) var(--spacing-md);
-  padding: 0 0 var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
+  padding: 0 0 var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
 }
 
 .contact-item {
@@ -338,8 +338,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .contact-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   color: var(--accent-primary);
   flex-shrink: 0;
   transition: transform var(--transition-base);
