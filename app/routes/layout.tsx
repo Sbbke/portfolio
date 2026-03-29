@@ -1,6 +1,6 @@
 // src/routes/RootLayout.tsx
 import { Outlet, useLoaderData, Link, useNavigation} from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import "./layout.css";
 import ErrorPage from "./error-page";
 import { getAllPosts } from "src/lib/posts";
@@ -284,8 +284,6 @@ export function ErrorBoundary() {
           </div>
         </main>
       </div>
-
-
   );
 }
 
