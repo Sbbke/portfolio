@@ -2,7 +2,7 @@
   "name": "my-react-router-app",
   "private": true,
   "type": "module",
-  "homepage": "https://Sbbke.github.io",
+  "homepage": "https://Sbbke.github.io/portfolio",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
