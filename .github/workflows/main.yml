@@ -42,7 +42,7 @@ jobs:
       - name: Deploy to Repo B
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # token: ${{ secrets.PORTFOLIO_KEY }}
+          token: ${{ secrets.PORTFOLIO_KEY }}
           repository-name: Sbbke/portfolio 
           branch: gh-page # The branch in Repo B for hosting
           folder: build/client # The folder the build step generated
