@@ -44,6 +44,6 @@ jobs:
         with:
           # token: ${{ secrets.PORTFOLIO_KEY }}
           repository-name: Sbbke/portfolio 
-          branch: gh-pages # The branch in Repo B for hosting
+          branch: gh-page # The branch in Repo B for hosting
           folder: build/client # The folder the build step generated
           clean: true
