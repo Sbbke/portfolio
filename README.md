@@ -47,7 +47,8 @@ Local navigation via the sidebar works smoothly in dev mode. Once deployed, rout
 
 - Assumption
 > The routing issues likely stem from the fact that the website is hosted in a subfolder on GitHub Pages (e.g., username.github.io/cv/). Because of how GitHub Pages handles requests, navigating to /cv triggers GitHub's internal routing first. If the React Router is also configured with a /cv base route, a conflict occurs where GitHub’s sequential execution takes priority, potentially leading to a 404 or a broken route resolution before the app even loads.
+> 
 - Test - routing mechnism
-> To test the github routing mechanism, I modify the workflow to publish the artifact under the same repo but different branch instead of target repo. The routing is still not being resolved correctly.
+> To test this, I modified the workflow to publish the artifact to a different branch within the same repository. However the routing is still not being resolved correctly.
 
-I found this [issue](https://github.com/orgs/community/discussions/64096) on github
+While searching online for more information, I found this [issue](https://github.com/orgs/community/discussions/64096) on github. Following the suggested solution, I refactored the project from Framework Mode to Data Mode. This involved significant changes to package.json, vite.config.ts, and the removal of framework-specific configurations. Finally, I implemented HashRouter to wrap the application, which successfully resolved the routing conflicts.
