@@ -6,6 +6,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   // base: "/portfolio/",
+  base:".",
   plugins: [tailwindcss(), react(), tsconfigPaths()],
   build: {
     outDir: "build/client",
