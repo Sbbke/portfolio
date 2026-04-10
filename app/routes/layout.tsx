@@ -4,6 +4,7 @@ import { useState, useEffect, use } from "react";
 import "./layout.css";
 import ErrorPage from "./error-page";
 import { getAllPosts } from "src/lib/posts";
+import Menubar from "./menubar";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 type Category = "cv" | "blog";
@@ -235,7 +236,7 @@ export default function RootLayout() {
           <ContactBar />
         </div>
       </header>
-
+      <Menubar />
       <div className="app-layout">
         <aside id="sidebar">
           <nav>
