@@ -1,16 +1,11 @@
 import MenubarSection from "./menu";
 
 const NAV_ITEMS = [
-  {
-    title: "Home",
-    links: [{ label: "Home", path: "/" }],
-    activePathPrefix: "/",
-  },
+
   {
     title: "CV",
     links: [
       { label: "Overview", path: "/cv" },
-      { label: "Experience", path: "/cv/experience" },
     ],
     activePathPrefix: "/cv",
   },

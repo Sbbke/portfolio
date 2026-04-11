@@ -1,5 +1,5 @@
 // src/routes/RootLayout.tsx
-import { Outlet, useLoaderData, Link, useNavigation} from "react-router";
+import { Outlet, NavLink, Link, useNavigation} from "react-router";
 import { useState, useEffect, use } from "react";
 import "./layout.css";
 import ErrorPage from "./error-page";
@@ -141,10 +141,10 @@ function SidebarSection({ title, items, activePathPrefix }: {
 
             return (
               <li key={item.id}>
-                <Link to={to} className={pathname?.startsWith(activePathPrefix) ? "active" : ""}>
+                <NavLink to={to} className={pathname?.startsWith(activePathPrefix) ? "active" : ""}>
                   {item.title}
                   {item.favorite && <span className="favorite">★</span>}
-                </Link>
+                </NavLink>
               </li>
             );
           })}
