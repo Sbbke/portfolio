@@ -229,11 +229,11 @@ export default function RootLayout() {
     <div className="page-container">
       <header className="header">
         <div className="container">
-          <ThemeToggle darkMode={darkMode} onToggle={toggle} />
           <Link to="/" className="page-title-link">
             <h1 className="page-title">Andrew Hou</h1>
           </Link>
           <ContactBar />
+          <ThemeToggle darkMode={darkMode} onToggle={toggle} />
         </div>
       </header>
       <Menubar />
